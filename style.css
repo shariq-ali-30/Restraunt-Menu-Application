@@ -1,0 +1,413 @@
+:root {
+    --primary-yellow: #F59E0B;
+    --secondry-yellow: #e89300;
+    --body-bg: #F9FAFB;
+    --navbar-bg: #FFF;
+    --filter-btn-hover-bg: #F2F2F2;
+    --card-image-bg: #F3F4F6;
+    --rating-bg: #FFFBEB;
+
+
+    --text-primary: #1F2937;
+    --text-seconry: #6B7280;
+    --one-more-text: #9CA3B7;
+    --text-filter-btn: #4B5563;
+    --search-icon-color: #9CA3AF;
+    --empty-message-text: #A2A5AB;
+
+    --searchBar-border: 1px solid #E5E7EB;
+    --filter-btns-border: 1px solid #F3F4F6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    padding: 76px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: var(--navbar-bg);
+    padding: 16px 0;
+    border-bottom: var(--searchBar-border);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar .logo .icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-yellow);
+    color: #FFF;
+    font-size: 17px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .logo .title h3 {
+    color: var(--primary-yellow);
+}
+
+.navbar .logo .title p {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-seconry);
+    letter-spacing: 1px;
+}
+
+/* Hero Section */
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-section .top-content h1 {
+    margin-top: 30px;
+    font-size: 36px;
+    color: var(--text-primary);
+}
+
+.hero-section .top-content h1 span {
+    color: var(--primary-yellow);
+}
+
+.hero-section .top-content p {
+    margin-top: 8px;
+    max-width: 450px;
+    color: var(--text-seconry);
+    font-size: 12px;
+}
+
+.hero-section .search-bar {
+    position: relative;
+    background-color: var(--navbar-bg);
+    margin-top: 50px;
+    width: 100%;
+    max-width: 500px;
+    height: 45px;
+    border-radius: 12px;
+}
+
+.hero-section .search-bar input {
+    width: 100%;
+    height: 100%;
+    border: var(--searchBar-border);
+    border-radius: inherit;
+    outline: 2px solid transparent;
+    padding: 0 40px;
+    padding-left: 45px;
+    transition: outline 0.1s ease;
+}
+
+.hero-section .search-bar input::placeholder {
+    color: var(--search-icon-color);
+}
+
+.hero-section .search-bar input:focus {
+    outline: 2px solid var(--primary-yellow);
+    border: none;
+}
+
+.hero-section .search-bar .fa-magnifying-glass {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 12px;
+    color: var(--search-icon-color);
+}
+
+.hero-section .search-bar .fa-circle-xmark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    color: var(--search-icon-color);
+    font-size: 15px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.hero-section .search-bar .fa-circle-xmark.active {
+    visibility: initial;
+}
+
+.hero-section .filter-btns {
+    max-width: 720px;
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    margin-top: 30px;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.hero-section .filter-btns button {
+    background-color: var(--navbar-bg);
+    color: var(--text-filter-btn);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: var(--filter-btns-border);
+    outline: none;
+    border-radius: 30px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.hero-section .filter-btns button:hover {
+    background-color: var(--filter-btn-hover-bg);
+}
+
+.hero-section .filter-btns button:active {
+    scale: 0.98;
+}
+
+.hero-section .filter-btns button.active {
+    background-color: var(--primary-yellow);
+    color: #FFF;
+    box-shadow: 0 0 8px 0 #f59f0b9c;
+    border: var(--primary-yellow);
+}
+
+/* Cards Section */
+
+.cards-section-parent {
+    position: relative;
+}
+
+.cards-section {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px 40px;
+    min-height: 300px;
+}
+
+.empty-message {
+    /* color: var(--text-seconry); */
+    color: var(--empty-message-text);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.empty-message.active {
+    visibility: visible;
+}
+
+.empty-message i {
+    font-size: 60px;
+    margin-bottom: 6px;
+}
+
+.empty-message p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cards-section .card {
+    position: relative;
+    width: 400px;
+    height: 470px;
+    background-color: var(--navbar-bg);
+    border-radius: 20px;
+    border: var(--searchBar-border);
+}
+
+.cards-section .card .image {
+    position: relative;
+    background-color: var(--card-image-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.cards-section .card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.2s ease;
+}
+
+.cards-section .card .image img:hover {
+    scale: 1.03;
+}
+
+.cards-section .card .image .price {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    background-color: var(--primary-yellow);
+    color: #FFF;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: default;
+}
+
+.cards-section .card .details {
+    padding: 20px;
+}
+
+.cards-section .card .details .top-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cards-section .card .details .top-details .category {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--secondry-yellow);
+    letter-spacing: 1.5px;
+}
+
+.cards-section .card .details .top-details .rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-yellow);
+    background-color: var(--rating-bg);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.cards-section .card .details .title {
+    margin: 10px 0;
+    color: var(--text-primary);
+    text-transform: capitalize;
+}
+
+.cards-section .card .details .description {
+    font-size: 12px;
+    height: 50px;
+    overflow: auto;
+    scrollbar-width: none;
+    color: var(--text-seconry);
+}
+
+.cards-section .card .details .bottom-details .hr {
+    border-bottom: var(--filter-btns-border);
+    margin-bottom: 18px;
+}
+
+.cards-section .card .details .bottom-details {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 44px);
+    padding: 18px 0;
+}
+
+.cards-section .card .details .bottom-details .bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.cards-section .card .details .bottom-details .bottom-content .time {
+    font-size: 12px;
+    color: var(--one-more-text);
+}
+
+.cards-section .card .details .bottom-details .bottom-content .order-btn {
+    margin-right: -10px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--secondry-yellow);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: gap 0.2s ease;
+}
+
+.cards-section .card .details .bottom-details .bottom-content .order-btn:hover {
+    gap: 8px;
+}
+
+@media (min-width: 1400px) {
+
+    .hero-section .top-content h1 {
+        margin-top: 60px;
+        font-size: 40px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    * {
+        cursor: default !important;
+    }
+
+    body {
+        padding-bottom: 20px;
+    }
+
+    .container {
+        width: 98%;
+    }
+
+    .hero-section .top-content h1 {
+        font-size: 30px;
+    }
+
+    .hero-section p {
+        font-size: 14px;
+    }
+
+    .hero-section .search-bar {
+        margin-top: 30px;
+    }
+
+
+}
