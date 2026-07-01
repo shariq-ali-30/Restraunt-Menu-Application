@@ -47,6 +47,24 @@ let filterBtnsParent = document.querySelector(".filter-btns")
 let searchInput = document.querySelector(".search-bar input")
 let crossIcon = document.querySelector(".fa-circle-xmark")
 let emptyMessage = document.querySelector(".empty-message")
+let themeToggleBtn = document.querySelector(".theme-toggle")
+let themeIcon = themeToggleBtn.children[0]
+let scrollTopBtn = document.querySelector(".scroll-top")
+
+if (!localStorage.getItem("theme")) {
+    localStorage.setItem("theme", "light")
+}
+
+let theme = localStorage.getItem("theme")
+
+if (theme == "dark") {
+    themeIcon.classList.replace("fa-moon", "fa-sun")
+    document.body.classList.add("dark-mode")
+} else {
+    themeIcon.classList.replace("fa-sun", "fa-moon")
+    document.body.classList.remove("dark-mode")
+}
+
 
 function displayItems(items) {
     cardsContainer.innerHTML = ""
@@ -134,7 +152,29 @@ function searchHandler() {
     displayItems(filterdItems)
 }
 
+
+filterBtnsParent.children[0].addEventListener("click", () => filterItems(filterBtnsParent.children[0]))
+filterBtnsParent.children[1].addEventListener("click", () => filterItems(filterBtnsParent.children[1]))
+filterBtnsParent.children[2].addEventListener("click", () => filterItems(filterBtnsParent.children[2]))
+filterBtnsParent.children[3].addEventListener("click", () => filterItems(filterBtnsParent.children[3]))
+filterBtnsParent.children[4].addEventListener("click", () => filterItems(filterBtnsParent.children[4]))
+filterBtnsParent.children[5].addEventListener("click", () => filterItems(filterBtnsParent.children[5]))
+filterBtnsParent.children[6].addEventListener("click", () => filterItems(filterBtnsParent.children[6]))
 searchInput.addEventListener("input", searchHandler);
+themeToggleBtn.addEventListener("click", () => {
+
+    let theme = localStorage.getItem("theme")
+
+    if (theme == "light") {
+        document.body.classList.add("dark-mode")
+        themeIcon.classList.replace("fa-moon", "fa-sun")
+        localStorage.setItem("theme", "dark")
+    } else {
+        document.body.classList.remove("dark-mode")
+        themeIcon.classList.replace("fa-sun", "fa-moon")
+        localStorage.setItem("theme", "light")
+    }
+})
 crossIcon.addEventListener("click", () => {
     searchInput.value = ""
     crossIcon.classList.remove("active")
@@ -144,10 +184,16 @@ crossIcon.addEventListener("click", () => {
     filterBtnsParent.children[0].classList.add("active")
     displayItems(menu)
 });
-filterBtnsParent.children[0].addEventListener("click", () => filterItems(filterBtnsParent.children[0]))
-filterBtnsParent.children[1].addEventListener("click", () => filterItems(filterBtnsParent.children[1]))
-filterBtnsParent.children[2].addEventListener("click", () => filterItems(filterBtnsParent.children[2]))
-filterBtnsParent.children[3].addEventListener("click", () => filterItems(filterBtnsParent.children[3]))
-filterBtnsParent.children[4].addEventListener("click", () => filterItems(filterBtnsParent.children[4]))
-filterBtnsParent.children[5].addEventListener("click", () => filterItems(filterBtnsParent.children[5]))
-filterBtnsParent.children[6].addEventListener("click", () => filterItems(filterBtnsParent.children[6]))
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        scrollTopBtn.classList.add("active")
+    } else {
+        scrollTopBtn.classList.remove("active")
+    }
+})
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+})

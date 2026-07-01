@@ -1,15 +1,14 @@
 :root {
     --primary-yellow: #F59E0B;
-    --secondry-yellow: #e89300;
+    --secondry-yellow: #E89300;
     --body-bg: #F9FAFB;
     --navbar-bg: #FFF;
     --filter-btn-hover-bg: #F2F2F2;
     --card-image-bg: #F3F4F6;
     --rating-bg: #FFFBEB;
 
-
     --text-primary: #1F2937;
-    --text-seconry: #6B7280;
+    --text-secondary: #6B7280;
     --one-more-text: #9CA3B7;
     --text-filter-btn: #4B5563;
     --search-icon-color: #9CA3AF;
@@ -19,11 +18,33 @@
     --filter-btns-border: 1px solid #F3F4F6;
 }
 
+.dark-mode {
+    --primary-yellow: #F59E0B;
+    --secondry-yellow: #F59E0B;
+    --body-bg: #030712;
+    --navbar-bg: #0F1423;
+    --filter-btn-hover-bg: #1F2937;
+    --card-image-bg: #1F2937;
+    --rating-bg: #3A2E0B;
+
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --one-more-text: #6B7280;
+    --text-filter-btn: #9CA3AF;
+    --search-icon-color: #6B7280;
+    --empty-message-text: #495a74;
+
+    --searchBar-border: 1px solid #1F2937;
+    --filter-btns-border: 1px solid #1F2937;
+
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 body {
@@ -48,6 +69,12 @@ body {
     top: 0;
     width: 100%;
     z-index: 1;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar .logo {
@@ -75,8 +102,21 @@ body {
 .navbar .logo .title p {
     font-size: 10px;
     font-weight: 600;
-    color: var(--text-seconry);
+    color: var(--text-secondary);
     letter-spacing: 1px;
+}
+
+.navbar .theme-toggle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-image-bg);
+    color: var(--primary-yellow);
+    cursor: pointer;
 }
 
 /* Hero Section */
@@ -90,7 +130,7 @@ body {
 }
 
 .hero-section .top-content h1 {
-    margin-top: 30px;
+    margin-top: 60px;
     font-size: 36px;
     color: var(--text-primary);
 }
@@ -102,7 +142,7 @@ body {
 .hero-section .top-content p {
     margin-top: 8px;
     max-width: 450px;
-    color: var(--text-seconry);
+    color: var(--text-secondary);
     font-size: 12px;
 }
 
@@ -120,11 +160,13 @@ body {
     width: 100%;
     height: 100%;
     border: var(--searchBar-border);
+    background-color: var(--navbar-bg);
+    color: var(--text-primary);
     border-radius: inherit;
     outline: 2px solid transparent;
     padding: 0 40px;
     padding-left: 45px;
-    transition: outline 0.1s ease;
+    transition: outline 0.2s ease;
 }
 
 .hero-section .search-bar input::placeholder {
@@ -182,7 +224,6 @@ body {
     border-radius: 30px;
     white-space: nowrap;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
 .hero-section .filter-btns button:hover {
@@ -216,7 +257,6 @@ body {
 }
 
 .empty-message {
-    /* color: var(--text-seconry); */
     color: var(--empty-message-text);
     position: absolute;
     height: 100%;
@@ -271,7 +311,7 @@ body {
 }
 
 .cards-section .card .image img:hover {
-    scale: 1.03;
+    scale: 1.1;
 }
 
 .cards-section .card .image .price {
@@ -328,7 +368,7 @@ body {
     height: 50px;
     overflow: auto;
     scrollbar-width: none;
-    color: var(--text-seconry);
+    color: var(--text-secondary);
 }
 
 .cards-section .card .details .bottom-details .hr {
@@ -373,10 +413,30 @@ body {
     gap: 8px;
 }
 
+.scroll-top {
+    position: fixed;
+    right: 80px;
+    bottom: 40px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-yellow);
+    color: #FFF;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transform: translateY(100px);
+    transition: transform 0.1s ease-in-out;
+}
+
+.scroll-top.active {
+    transform: translateY(0);
+}
+
 @media (min-width: 1400px) {
 
     .hero-section .top-content h1 {
-        margin-top: 60px;
         font-size: 40px;
     }
 
@@ -409,5 +469,8 @@ body {
         margin-top: 30px;
     }
 
-
+    .scroll-top {
+        right: 20px;
+        bottom: 20px;
+    }
 }
