@@ -128,6 +128,12 @@ function filterItems(selectedFilterBtn) {
     displayItems(filterdItems)
     searchInput.value = ""
     crossIcon.classList.remove("active")
+
+    if (cardsContainer.children.length == 0) {
+        emptyMessage.classList.add("active")
+    } else {
+        emptyMessage.classList.remove("active")
+    }
 }
 
 function searchHandler() {
