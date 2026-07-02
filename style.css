@@ -44,13 +44,18 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.no-transition *,
+body.no-transition {
+    transition: none !important;
 }
 
 body {
     background-color: var(--body-bg);
     padding: 76px 0;
 }
+
 
 .container {
     width: 90%;
@@ -116,6 +121,7 @@ body {
     align-items: center;
     background-color: var(--card-image-bg);
     color: var(--primary-yellow);
+    border: none;
     cursor: pointer;
 }
 
@@ -224,6 +230,7 @@ body {
     border-radius: 30px;
     white-space: nowrap;
     cursor: pointer;
+    transition: background-color 0.2s ease, scale 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-section .filter-btns button:hover {
@@ -237,8 +244,8 @@ body {
 .hero-section .filter-btns button.active {
     background-color: var(--primary-yellow);
     color: #FFF;
-    box-shadow: 0 0 8px 0 #f59f0b9c;
-    border: var(--primary-yellow);
+    box-shadow: 0 0 8px 0 var(--primary-yellow);
+    border: 1px solid var(--primary-yellow);
 }
 
 /* Cards Section */
@@ -365,7 +372,7 @@ body {
 
 .cards-section .card .details .description {
     font-size: 12px;
-    height: 50px;
+    height: 55px;
     overflow: auto;
     scrollbar-width: none;
     color: var(--text-secondary);
@@ -427,7 +434,8 @@ body {
     outline: none;
     cursor: pointer;
     transform: translateY(100px);
-    transition: transform 0.1s ease-in-out;
+    box-shadow: 0 0 15px 0px var(--primary-yellow);
+    transition: transform 0.05s ease-in-out;
 }
 
 .scroll-top.active {

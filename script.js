@@ -52,7 +52,7 @@ let themeIcon = themeToggleBtn.children[0]
 let scrollTopBtn = document.querySelector(".scroll-top")
 
 if (!localStorage.getItem("theme")) {
-    localStorage.setItem("theme", "light")
+    localStorage.setItem("theme", "dark")
 }
 
 let theme = localStorage.getItem("theme")
@@ -128,6 +128,12 @@ function filterItems(selectedFilterBtn) {
     displayItems(filterdItems)
     searchInput.value = ""
     crossIcon.classList.remove("active")
+
+    if (cardsContainer.children.length == 0) {
+        emptyMessage.classList.add("active")
+    } else {
+        emptyMessage.classList.remove("active")
+    }
 }
 
 function searchHandler() {
@@ -160,8 +166,16 @@ filterBtnsParent.children[3].addEventListener("click", () => filterItems(filterB
 filterBtnsParent.children[4].addEventListener("click", () => filterItems(filterBtnsParent.children[4]))
 filterBtnsParent.children[5].addEventListener("click", () => filterItems(filterBtnsParent.children[5]))
 filterBtnsParent.children[6].addEventListener("click", () => filterItems(filterBtnsParent.children[6]))
+
 searchInput.addEventListener("input", searchHandler);
+
 themeToggleBtn.addEventListener("click", () => {
+
+    document.body.classList.add("no-transition")
+
+    setTimeout(() => {
+        document.body.classList.remove("no-transition")
+    }, 500);
 
     let theme = localStorage.getItem("theme")
 
